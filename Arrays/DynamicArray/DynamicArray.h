@@ -1,5 +1,14 @@
 /*
  * File: DynamicArray.h
+ *
+ * Pros of Dynamic Array
+ *      Array access runs in constant time
+ *
+ * Cons of Dynamic Array
+ *      Resizing the array runs in O(n) time
+ *      May need to resize the array frequently
+ *      Removing an element from the array requires copying the whole array and shifting parts of it
+ *      Inserting an element into the array requires copying the whole array and shifting parts of it
  */
 
 #ifndef DYNAMICARRAY_H

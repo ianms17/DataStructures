@@ -19,7 +19,7 @@ DynamicArray::DynamicArray() {
  * void Push (int data)
  *      Function: Add the element data to the end of the array
  *                Resize the array if current number of items equals capacity
- *      Run Time:
+ *      Run Time: O(n) - Resizing the array requires copying over n items
  */
 void DynamicArray::Push(int data) {
 
@@ -58,7 +58,7 @@ void DynamicArray::Push(int data) {
  *      Function: Add the element data to the position idx in the array
  *                Resize the array if the current number of items equals capacity
  *                Function will overwrite value currently in position idx
- *      Run Time:
+ *      Run Time: O(n) - Resizing the array requires copying over n items
  */
 void DynamicArray::Push(int data, int idx) {
 
@@ -83,7 +83,7 @@ void DynamicArray::Push(int data, int idx) {
 /*
  * int Pop
  *      Function: Removes the last element from the list and returns it
- *      Run Time:
+ *      Run Time: O(1) - Get last elements and remove it, no resize operations
  */
 int DynamicArray::Pop() {
 
@@ -101,7 +101,7 @@ int DynamicArray::Pop() {
 /*
  * int Get (int idx)
  *      Function: Returns the item at position idx in the array
- *      Run Time:
+ *      Run Time: O(1) - Accessing elements in array runs in constant time
  */
 int DynamicArray::Get(int idx) {
 
@@ -120,7 +120,7 @@ int DynamicArray::Get(int idx) {
 /*
  * int Size
  *      Function: Returns the total number of elements stored in the array
- *      Run Time:
+ *      Run Time: O(1) - one operation, return private data member
  */
 int DynamicArray::Size() {
 
@@ -131,7 +131,7 @@ int DynamicArray::Size() {
 /*
  * int GetCapacity
  *      Function: Returns the total number of elements that can be stored in the array
- *      Run Time:
+ *      Run Time: O(1) - only returns private data member
  */
 int DynamicArray::GetCapacity() {
 
@@ -143,7 +143,7 @@ int DynamicArray::GetCapacity() {
 /*
  * void Print
  *      Function: Prints the elements in the array to the screen
- *      Run Time:
+ *      Run Time: O(n) - output all n values in the array
  */
 void DynamicArray::Print() {
 
