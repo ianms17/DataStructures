@@ -32,6 +32,11 @@ public:
     void Remove(int idx);
 
     /*
+     * GetNode
+     */
+    Node* GetNode(int idx);
+
+    /*
      * GetHead
      */
     Node* GetHead() { return HEAD; }

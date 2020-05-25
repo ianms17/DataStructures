@@ -4,6 +4,9 @@
 #include "LinkedList.h"
 #include "Node.h"
 #include <iostream>
+#include <stdexcept>
+
+using namespace std;
 
 ///// Public Functions /////
 
@@ -35,6 +38,129 @@ LinkedList::~LinkedList() {
     HEAD = nullptr;
     TAIL = nullptr;
     size = 0;
+
+}
+
+/*
+ * GetNode
+ */
+Node* LinkedList::GetNode(int idx) {
+
+    // check if idx is out of bounds
+    if (idx > size) {
+        throw underflow_error("Index out of Bounds");
+    }
+    // check if idx is first element, call getHead
+    if (idx == 0) {
+        return GetHead();
+    }
+    // check if idx is last element, call getTail
+    if (idx == size) {
+        return GetTail();
+    }
+
+    // if not out of bounds, first, or last, then its in the middle
+    int i = 0;
+    Node* cursor = HEAD;
+    while (i < idx) {
+        // cursor equals the next node after to cursor
+        cursor = cursor->link;
+        i++;
+    }
+    return cursor;
+
+}
+
+/*
+ * Function: Insert
+ */
+void LinkedList::Insert(int data, int idx) {
+
+    // check out of bounds
+    if (idx > size) {
+        throw underflow_error("Index out of Bounds");
+    }
+
+    // idx is 0, call insert front
+    if (idx == 0) {
+        InsertFront(data);
+        size++;
+        return;
+    }
+
+    // idx is size, call insert back
+    if (idx == size) {
+        InsertBack(data);
+        size++;
+        return;
+    }
+
+    /*
+     * otherwise inserting in middle
+     */
+
+    // create new insert node containing data passed in and set cursor to head
+    Node* insert = new Node(data);
+    Node* cursor = HEAD;
+
+    // traverse to element idx in the list
+    int i = 0;
+    while (i < idx) {
+        cursor = cursor->link;
+        i++;
+    }
+
+    // point inserts link to cursors link, then cursors link to insert
+    insert = cursor->link;
+    cursor->link = insert;
+    size++;
+
+}
+
+/*
+ * Function: Remove
+ */
+void LinkedList::Remove(int idx) {
+
+    // check that idx is in bounds
+    if (idx > size) {
+        throw underflow_error("Index out of Bounds");
+    }
+
+    // idx is 0, remove front
+    if (idx == 0) {
+        RemoveFront();
+        size--;
+        return;
+    }
+
+    // idx is size, remove back
+    if (idx == size) {
+        RemoveBack();
+        size--;
+        return;
+    }
+
+    /*
+     * otherwise remove from middle
+     */
+    // create a cursor and previous node
+    Node* cursor = HEAD;
+    Node* previous = HEAD;
+
+    // traverse cursor to removal node and previous to the element before cursor
+    int i = 0;
+    while (i < idx) {
+        previous = cursor;
+        cursor = cursor->link;
+        i++;
+    }
+
+    // set previous link to cursors next link, set cursor link to null, delete cursor
+    previous->link = cursor->link;
+    cursor->link = nullptr;
+    delete cursor;
+    size--;
 
 }
 
