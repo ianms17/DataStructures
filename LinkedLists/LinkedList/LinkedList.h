@@ -2,6 +2,15 @@
  * File: LinkedList.h
  */
 
+/*
+ * Pros and Cons of Linked List
+ *  Pros:
+ *      Insertion into linked list will never need to resize the list
+ *      Removal from linked list will never need to resize the list
+ *  Cons:
+ *      Getting an element from the list is O(n) time complexity
+ */
+
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
@@ -50,6 +59,11 @@ public:
      * GetSize
      */
     int GetSize() { return size; }
+
+    /*
+     * PrintList
+     */
+    void PrintList();
 
 private:
     ///// Private Data Members /////

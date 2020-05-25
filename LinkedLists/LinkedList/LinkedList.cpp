@@ -43,6 +43,8 @@ LinkedList::~LinkedList() {
 
 /*
  * GetNode
+ * Runtime:
+ *      O(n) - in worst case, you would need to traverse n - 1 nodes
  */
 Node* LinkedList::GetNode(int idx) {
 
@@ -73,6 +75,8 @@ Node* LinkedList::GetNode(int idx) {
 
 /*
  * Function: Insert
+ * Runtime:
+ *      O(n): at worst case, you would need to traverse n-1 nodes
  */
 void LinkedList::Insert(int data, int idx) {
 
@@ -119,6 +123,8 @@ void LinkedList::Insert(int data, int idx) {
 
 /*
  * Function: Remove
+ * Runtime:
+ *      O(n) - in worst case you would need to traverse n - 1 nodes
  */
 void LinkedList::Remove(int idx) {
 
@@ -164,11 +170,26 @@ void LinkedList::Remove(int idx) {
 
 }
 
+/*
+ * Function: PrintList
+ */
+void LinkedList::PrintList() {
+
+    Node* cursor = HEAD;
+    while (cursor->link != nullptr) {
+        cout << cursor->data << " ";
+        cursor = cursor->link;
+    }
+
+}
+
 
 ///// Private Helper Functions /////
 
 /*
  * Function: InsertFront
+ * Runtime:
+ *      O(1) - using HEAD pointer no traversal is needed, operations run in constant time
  */
 void LinkedList::InsertFront(int data) {
 
@@ -187,6 +208,8 @@ void LinkedList::InsertFront(int data) {
 
 /*
  * Function: InsertBack
+ * Runtime:
+ *      O(1) - using TAIL pointer no traversal is needed, operations run in constant time
  */
 void LinkedList::InsertBack(int data) {
 
@@ -206,6 +229,8 @@ void LinkedList::InsertBack(int data) {
 
 /*
  * Function: RemoveFront
+ * Runtime:
+ *      O(1) - using HEAD pointer no traversal is needed, operations run in constant time
  */
 void LinkedList::RemoveFront() {
 
@@ -224,6 +249,8 @@ void LinkedList::RemoveFront() {
 
 /*
  * Function: RemoveBack
+ * Runtime:
+ *      O(1) - using TAIL pointer no traversal is needed, operations run in constant time
  */
 void LinkedList::RemoveBack() {
 
